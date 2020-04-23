@@ -58,5 +58,14 @@ public class SlotAnimator : MonoBehaviour
                 EnemyAnchors[enemies[i].GetSlotIndex()].localPosition, _speed));
         }
     }
+
+    // 배치용 애니메이션 함수 제작 필요
+    public void SpawnSlotsAnim(float _speed = 1.0f)
+    {
+        // 모든 애니 코루틴 중단
+        StopAllCoroutines();
+
+        
+    }
     
 }

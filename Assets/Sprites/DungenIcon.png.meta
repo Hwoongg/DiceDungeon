@@ -8,6 +8,7 @@ TextureImporter:
     21300006: DungenIcon_3
     21300008: DungenIcon_4
     21300010: DungenIcon_5
+    21300012: DungenIcon_6
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -117,8 +118,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96.666664
-        height: 87
+        width: 100.14286
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,7 +127,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f78aa50bdb50a90428a9ae357d050cce
+      spriteID: bebfcdc2e698e3a43be730d9962ac5fe
       vertices: []
       indices: 
       edges: []
@@ -135,10 +136,10 @@ TextureImporter:
       name: DungenIcon_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 100
         y: 0
-        width: 96.666664
-        height: 87
+        width: 100.14286
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,7 +147,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc28fe7f7b6e98c4e9efce731d0d7c50
+      spriteID: b83af319cb7048344ad4fa887cee8ba5
       vertices: []
       indices: 
       edges: []
@@ -155,10 +156,10 @@ TextureImporter:
       name: DungenIcon_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 200
         y: 0
-        width: 96.666664
-        height: 87
+        width: 100.14286
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,7 +167,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8c65b29868cf9144839bf64d91ee947
+      spriteID: a5adc8bfec5dda841b24bd193b8d52f2
       vertices: []
       indices: 
       edges: []
@@ -175,10 +176,10 @@ TextureImporter:
       name: DungenIcon_3
       rect:
         serializedVersion: 2
-        x: 288
+        x: 300
         y: 0
-        width: 96.666664
-        height: 87
+        width: 100.14286
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -186,7 +187,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a15a7f3e0ca3a444bb1ce0b2c3c9dcd
+      spriteID: e2585ed4d63b97a4bbc29c917ce1d3b3
       vertices: []
       indices: 
       edges: []
@@ -195,10 +196,10 @@ TextureImporter:
       name: DungenIcon_4
       rect:
         serializedVersion: 2
-        x: 384
+        x: 400
         y: 0
-        width: 96.666664
-        height: 87
+        width: 100.14286
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,7 +207,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c03eb5fbdb81e5a4886b2407737cd601
+      spriteID: edc24f6e526896d46a4cadacb40027e8
       vertices: []
       indices: 
       edges: []
@@ -215,10 +216,10 @@ TextureImporter:
       name: DungenIcon_5
       rect:
         serializedVersion: 2
-        x: 480
+        x: 500
         y: 0
-        width: 96.666664
-        height: 87
+        width: 100.14286
+        height: 101
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,7 +227,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec9cdd18cef5c9946bdb3f38ab89a259
+      spriteID: 6a0acd7aa31fbdd48978c180152cbe71
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DungenIcon_6
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 0
+        width: 100.14286
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65ba3b4eb2b9c2438507b7275296053
       vertices: []
       indices: 
       edges: []
@@ -234,7 +255,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 795bcebd90a5a7c45acaddaef4837ce7
+    spriteID: b8faa290323c45f4c81efee04d2dacf3
     vertices: []
     indices: 
     edges: []
