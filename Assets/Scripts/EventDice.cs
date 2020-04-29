@@ -10,6 +10,8 @@ using UnityEngine.EventSystems;
 // 던전 내 각종 이벤트에 사용될 주사위 오브젝트
 // 주 상호작용 인터페이스가 될 것
 //
+// BattleDice라는 형태로 파생시키고 추상클래스로 전환할지 고려 필요함
+//
 
 public class EventDice : MonoBehaviour
 {

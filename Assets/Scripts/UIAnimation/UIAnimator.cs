@@ -24,7 +24,8 @@ public static class UIAnimator
         //Button button = _gameObject.GetComponent<Button>();
         //if(button != null) // 버튼 기능 비활성화
         //    button.enabled = false;
-
+        
+        
         float nowLerp = 0.0f;
         Vector3 nowPos;
         Vector3 startPos = _startPos;
@@ -50,9 +51,11 @@ public static class UIAnimator
         //if(button != null) // 기능 복구
         //    button.enabled = true;
 
+        
         yield break;
     }
 
+    
     static public IEnumerator Scale(GameObject _gameObject, Vector2 _startScale,
         Vector2 _desScale, float _speed = 1.0f)
     {

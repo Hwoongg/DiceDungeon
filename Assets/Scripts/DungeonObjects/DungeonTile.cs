@@ -36,6 +36,8 @@ public class DungeonTile : MonoBehaviour
     [SerializeField] Sprite[] tileSprites;
     SpriteRenderer childRenderer; // 타일 속성 표시용은 자식에 붙일것임
 
+    TileIndex tileIndex;
+
     private void Start()
     {
         
@@ -47,15 +49,12 @@ public class DungeonTile : MonoBehaviour
     {
         //viewState = _vs;
         eventState = _es;
-
-
     }
 
     private void SetSprite(EventState _es)
     {
         // es를 sprite index로 변환, 렌더러에 세트
         childRenderer.sprite = tileSprites[(int)_es];
-        
     }
 
     // 타일 상태 액세스 함수 제작
@@ -67,6 +66,23 @@ public class DungeonTile : MonoBehaviour
     public void SetEventState(EventState _es)
     {
         eventState = _es;
+    }
+
+    public void MoveToThisTile()
+    {
+        DungeonPlayer dp = FindObjectOfType<DungeonSceneManager>().GetPlayer();
+        dp.SetIndex(tileIndex);
+        dp.Move(transform.position);
+    }
+
+    public void SetTileIndex(int _x, int _y)
+    {
+        TileIndex idx = new TileIndex(_x, _y);
+        tileIndex = idx;
+    }
+    public void SetTileIndex(TileIndex _idx)
+    {
+        tileIndex = _idx;
     }
 
 }

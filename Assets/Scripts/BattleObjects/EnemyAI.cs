@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// //////////////////////////////////////////
+//
+// 전투 시 적측 AI 실행시켜주는 클래스
+//
+// //////////////////////////////////////////
+
 public class EnemyAI : MonoBehaviour
 {
     // BCM 참조 필요. 전장 상태 받아와야 함.
