@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8279684087996636648
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1746290742696905285, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_Name
+      value: CastFX_Pull Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9107838706429888216, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 714523957278891953, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: PlayOnStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 714523957278891953, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: KillDelay
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707683736340653451, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.maxCurve.m_Curve.Array.data[0].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.maxCurve.m_Curve.Array.data[0].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.maxCurve.m_Curve.Array.data[1].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.maxCurve.m_Curve.Array.data[1].inSlope
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.maxCurve.m_Curve.Array.data[1].outSlope
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.maxCurve.m_Curve.Array.data[1].outWeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557889448235610259, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.38
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b0e1476dc5f90fa47b1c2c1a80d2ee36, type: 3}
