@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class BattleSlot : MonoBehaviour
 {
     bool isSelectable;
@@ -32,6 +33,8 @@ public class BattleSlot : MonoBehaviour
     [SerializeField] GameObject RangePannel;
 
     bool isAnimating;
+
+    List<Buff> buffs;
 
     private void Awake()
     {
@@ -63,8 +66,7 @@ public class BattleSlot : MonoBehaviour
     public void Init(BattleUnit _unit)
     {
         battleUnit = _unit;
-
-        //hpBar.value = battleUnit.curHp / battleUnit.maxHp;
+        
     }
     
     public void SetSelectable()
@@ -122,18 +124,19 @@ public class BattleSlot : MonoBehaviour
         try
         {
             int diceVal = dice.GetDiceValue();
-            battleUnit.commands[diceVal / 2].SetDiceValue(diceVal + 1); // 0~5이므로 1올려줘야함
+            battleUnit.commands[diceVal / 2].SetDiceValue(diceVal); 
             return battleUnit.commands[diceVal / 2];
         }
         catch
         {
-            Debug.Log("이상 캐치");
+            Debug.Log("GetCurrentCommand Get Anomally");
             return null;
         }
         
         
     }
 
+    #region Targetting Pannel Functions
     public void EnableMarker()
     {
         ActionButton.SetActive(false);
@@ -182,20 +185,28 @@ public class BattleSlot : MonoBehaviour
         RangePannel.SetActive(false);
     }
 
-    public void SetSlotIndex(int _idx)
-    {
-        slotIndex = _idx;
-    }
-
     public void EnableRangePannel()
     {
         RangePannel.SetActive(true);
     }
+    #endregion
 
+    // BCM측에서 생성 시점에 슬롯 번호 설정
+    public void SetSlotIndex(int _idx)
+    {
+        slotIndex = _idx;
+    }
+    public int GetSlotIndex()
+    {
+        return slotIndex;
+    }
+
+
+    #region Battle Events
     public void PlaySkill()
     {
         // 전투 애니메이션 재생
-        animator.SetTrigger("AttackTrigger");
+        animator.SetTrigger("AttackTrigger"); // 애셋 애니메이터에 맞춰 수정하도록
         isAnimating = true;
         // 애니메이션에서 CommandEffect()
         // 를 실행시켜 모든 데미지 처리가 되도록 한다
@@ -204,6 +215,7 @@ public class BattleSlot : MonoBehaviour
         Destroy(dice.gameObject);
     }
 
+    // 이 부분이 애니메이션에서 실행되어야함. 아니면 딜레이를 줘야할 것
     public void CommandEffect()
     {
         //Debug.Log("스킬 발동 : " + tm.GetCurrentCmd().GetName());
@@ -211,9 +223,9 @@ public class BattleSlot : MonoBehaviour
         GetCurrentCommand().Execute();
 
         // bcm에게 슬롯 재정렬 요청
-        // ...
+        bcm.SortSlotIndex();
 
-        // 슬롯 정렬이 끝났을때 false되도록 변경하자
+        // 슬롯 정렬이 끝났을때 false되도록 변경해야함
         isAnimating = false;
     }
 
@@ -228,7 +240,7 @@ public class BattleSlot : MonoBehaviour
         // UI에 적용. float로 수동 형변환 필요
         hpBar.value = (float)battleUnit.curHp / battleUnit.maxHp;
         
-        if(battleUnit.curHp < 0)
+        if(battleUnit.curHp < 1)
         {
             // 슬롯에서 삭제
             // 리스트에서 지우고
@@ -240,14 +252,53 @@ public class BattleSlot : MonoBehaviour
         }
     }
 
+    public void TurnEnd()
+    {
+        for(int i=0; i< buffs.Count; i++)
+        {
+            buffs[i].EndTurn(this);
+        }
+    }
+
+    public void TakeTrueDmg(int _dmg)
+    {
+        Debug.Log("방어력 무시 피해");
+
+        battleUnit.curHp -= _dmg;
+
+        // UI에 적용. float로 수동 형변환 필요
+        hpBar.value = (float)battleUnit.curHp / battleUnit.maxHp;
+
+        if (battleUnit.curHp < 1)
+        {
+            // 슬롯에서 삭제
+            // 리스트에서 지우고
+            bcm.RemoveSlot(transform.parent.name, slotIndex);
+
+
+            // 오브젝트 삭제. 애니메이션 처리로 위임
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void AddBuff(Buff _buff)
+    {
+        // 추가
+        buffs.Add(_buff);
+    }
+
+    public void RemoveBuff(Buff _buff)
+    {
+        buffs.Remove(_buff);
+    }
+    #endregion
+
+    // 적 행동 마침 여부 체크에 사용중
     public bool IsAnimating()
     {
         return isAnimating;
     }
 
-    public int GetSlotIndex()
-    {
-        return slotIndex;
-    }
+    
     
 }

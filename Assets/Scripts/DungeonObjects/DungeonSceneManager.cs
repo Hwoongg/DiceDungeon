@@ -46,10 +46,11 @@ public class DungeonSceneManager : MonoBehaviour
 
             for (int i = 0; i < hits.Length; i++)
             {
-                DungeonTile t = hits[i].transform.GetComponent<DungeonTile>();
-                if (t)
+                IClickInteraction t = 
+                    hits[i].transform.GetComponent<IClickInteraction>();
+                if (t != null)
                 {
-                    t.MoveToThisTile();
+                    t.Interaction();
                 }
             }
             

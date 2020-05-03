@@ -30,7 +30,7 @@ public class SlotAnimator : MonoBehaviour
             EnemyAnchors[i] = AnchorHost.GetChild(i);
         }
 
-        ReplaceSlotsAll(0.5f);
+        ReplaceSlotsAll(2.0f);
     }
 
     // 모든 슬롯 위치 갱신 이동 애니메이션 실행

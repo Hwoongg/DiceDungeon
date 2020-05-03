@@ -9,6 +9,11 @@ public class DungeonCamera : MonoBehaviour
     Vector3 camPos;
     Vector3 camRot;
 
+    //Transform closeUpAnchor;
+
+    [SerializeField] float speed;
+
+
     private void Awake()
     {
         camPos = new Vector3();
@@ -16,19 +21,25 @@ public class DungeonCamera : MonoBehaviour
         camRot.x = -45;
         
     }
+
     private void LateUpdate()
     {
         if (Target == null)
             return;
 
-        camPos = Target.transform.position;
-        camPos.z = -10;
-        camPos.x += 1.2f;
-        camPos.y -= 7;
-        transform.position = camPos;
-
-        transform.rotation = Quaternion.Euler(camRot);
         
+        //camPos = Target.transform.position;
+
+        //transform.position = camPos;
+        //transform.rotation = Target.transform.rotation;
+
+
+        // 밀착 방식에서 추적 방식으로
+        transform.position = Vector3.Lerp(transform.position, Target.transform.position,
+            Time.deltaTime * speed);
+
+        transform.rotation = Quaternion.Lerp(transform.rotation, Target.transform.rotation,
+            Time.deltaTime * speed);
     }
 
     public void SetTarget(GameObject _o)

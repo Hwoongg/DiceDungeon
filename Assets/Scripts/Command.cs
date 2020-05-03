@@ -109,7 +109,8 @@ public abstract class Command
 
     public void SetDiceValue(int _val)
     {
-        diceValue = _val;
+        // 0~5수치를 받으므로 1올려줘야함
+        diceValue = _val + 1;
     }
 
     // 진영 전체 정보를 받아서 자동 타겟팅. 몬스터꺼만 만듬

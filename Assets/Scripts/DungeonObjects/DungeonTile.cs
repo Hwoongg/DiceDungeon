@@ -6,7 +6,7 @@ using UnityEngine;
 // 던전 타일 클래스.
 //
 
-public class DungeonTile : MonoBehaviour
+public class DungeonTile : MonoBehaviour, IClickInteraction
 {
     // 자신의 상태
     // 보이는 상태인가 아닌가
@@ -83,6 +83,11 @@ public class DungeonTile : MonoBehaviour
     public void SetTileIndex(TileIndex _idx)
     {
         tileIndex = _idx;
+    }
+
+    public void Interaction()
+    {
+        MoveToThisTile();
     }
 
 }

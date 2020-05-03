@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BattleSceneManager : MonoBehaviour
 {
     // 전투중인 유닛들의 정보. 필드 시스템 생길때 뺄 것.
     List<BattleUnit> heros;
-    List<BattleUnit> enemies; // 전부 리스트로 바꿔야함 ㅡㅡ 삭제에 대응이 안됨
+    List<BattleUnit> enemies; 
 
     List<GameObject> heroSlots;
     List<GameObject> enemySlots;
@@ -22,7 +23,7 @@ public class BattleSceneManager : MonoBehaviour
     [SerializeField] GameObject DiceZone; // 주사위 슬롯
     [SerializeField] GameObject DragZone; // 드래그 중인 오브젝트 정렬용
 
-    
+
 
     // 한 턴에 설정한 명령들이 보관되는 리스트.
     // 포인터 리스트로 변경해야 하는가? 
@@ -30,11 +31,11 @@ public class BattleSceneManager : MonoBehaviour
     //List<Command> commands; 
     Command curCommand;
 
-   
-    // 현재 전투 시행중인가?
-    bool isBattle; 
 
-    
+    // 현재 전투 시행중인가?
+    bool isBattle;
+
+
     EventDice dragDice; // 드래그 중인 주사위 정보
 
 
@@ -63,10 +64,10 @@ public class BattleSceneManager : MonoBehaviour
         enemySlots = new List<GameObject>();
 
         isBattle = false;
-        
+
 
         CreateDice(heros.Count);
-        
+
     }
 
     void Start()
@@ -77,10 +78,10 @@ public class BattleSceneManager : MonoBehaviour
         spawnPos = PlayerZone.transform.position;
         spawnPos.x -= 50;
         //spawnPos.y -= 50;
-        for(int i = 0; i<heros.Count; i++)
+        for (int i = 0; i < heros.Count; i++)
         {
             // 아군측
-            heroSlots.Add(Instantiate(SlotPrefab, spawnPos,Quaternion.identity,PlayerZone.transform));
+            heroSlots.Add(Instantiate(SlotPrefab, spawnPos, Quaternion.identity, PlayerZone.transform));
             BattleSlot slot = heroSlots[i].GetComponent<BattleSlot>();
             slot.Init(heros[i]);
             slot.SetSlotIndex(i);
@@ -90,7 +91,7 @@ public class BattleSceneManager : MonoBehaviour
         spawnPos.x += 50;
         //spawnPos.y -= 50;
 
-        for (int i=0; i<enemies.Count; i++)
+        for (int i = 0; i < enemies.Count; i++)
         {
             // 적군측
             enemySlots.Add(Instantiate(SlotPrefab, spawnPos, Quaternion.identity, EnemyZone.transform));
@@ -98,7 +99,7 @@ public class BattleSceneManager : MonoBehaviour
             slot.Init(enemies[i]);
             slot.SetSlotIndex(i);
         }
-        
+
     }
 
     // 입력된 수만큼 주사위 생성.
@@ -145,7 +146,7 @@ public class BattleSceneManager : MonoBehaviour
     {
         BattleSlot[] res = new BattleSlot[heroSlots.Count];
 
-        for(int i=0; i<res.Length; i++)
+        for (int i = 0; i < res.Length; i++)
         {
             res[i] = heroSlots[i].GetComponent<BattleSlot>();
         }
@@ -177,7 +178,7 @@ public class BattleSceneManager : MonoBehaviour
             res[i] = heroSlots[i].GetComponent<BattleSlot>();
         }
 
-        for(int j=0;j<enemySlots.Count;i++, j++)
+        for (int j = 0; j < enemySlots.Count; i++, j++)
         {
             res[i] = enemySlots[j].GetComponent<BattleSlot>();
         }
@@ -189,7 +190,7 @@ public class BattleSceneManager : MonoBehaviour
     {
         BattleSlot[] slots = GetAllSlots();
 
-        for(int i=0; i<slots.Length; i++)
+        for (int i = 0; i < slots.Length; i++)
         {
             slots[i].ClearSlot();
         }
@@ -198,12 +199,12 @@ public class BattleSceneManager : MonoBehaviour
     public void DisableTargetInfoAll()
     {
         // 전체 결정버튼+범위패널 비활성화
-        for(int i=0; i<heroSlots.Count; i++)
+        for (int i = 0; i < heroSlots.Count; i++)
         {
             heroSlots[i].GetComponent<BattleSlot>().DisableTargetInfo();
         }
 
-        for(int i=0; i<enemySlots.Count;i++)
+        for (int i = 0; i < enemySlots.Count; i++)
         {
             enemySlots[i].GetComponent<BattleSlot>().DisableTargetInfo();
         }
@@ -220,7 +221,7 @@ public class BattleSceneManager : MonoBehaviour
         BattleSlot[] slots;
         _cmd.ClearTargetList();
 
-        switch(t)
+        switch (t)
         {
             case Command.Target.ENEMY:
                 slots = GetEnemySlots();
@@ -238,7 +239,7 @@ public class BattleSceneManager : MonoBehaviour
                     // 대상도 그냥 등록해버릴까? 생각보다 범위 판단하는게 귀찮다
                     // 스킬마다 이거 검사하는것도 일일듯
                     _cmd.AddTarget(slots[target].gameObject);
-                    
+
                 }
                 break;
 
@@ -274,13 +275,13 @@ public class BattleSceneManager : MonoBehaviour
                 }
                 break;
         }
-        
+
     }
 
     public void BattleEvent()
     {
         // 아직 전투 실행중인지 체크
-        if(isBattle)
+        if (isBattle)
         {
             return;
         }
@@ -288,23 +289,18 @@ public class BattleSceneManager : MonoBehaviour
         // 시전자측 전투 애니메이션 재생. 애니메이션 측에서 모든 처리가 될것임
         curCommand.GetCaster().GetComponent<BattleSlot>().PlaySkill();
 
-
-        // 자리 재정렬
-        // ... BattleSlot들의 형태로 보유해야할 필요가 있음
-        // 전투 단계를 슬롯에 꺼내짐->전투실행->슬롯에 복귀 형태로 쪼개면 원활할것인가?
-        // 슬롯 밀리는 애니도 잘 만들어봐야함... 결국 코루틴 사용?
         
     }
 
     // 슬롯들의 자신 위치 다시 매기기
     public void ResetSlotIndex()
     {
-        for(int i=0; i<heroSlots.Count; i++)
+        for (int i = 0; i < heroSlots.Count; i++)
         {
             heroSlots[i].GetComponent<BattleSlot>().SetSlotIndex(i);
         }
 
-        for(int i=0; i<enemySlots.Count; i++)
+        for (int i = 0; i < enemySlots.Count; i++)
         {
             enemySlots[i].GetComponent<BattleSlot>().SetSlotIndex(i);
         }
@@ -318,25 +314,48 @@ public class BattleSceneManager : MonoBehaviour
             heroSlots.RemoveAt(_index);
         }
 
-        if(_zoneName == "EnemyZone")
+        if (_zoneName == "EnemyZone")
         {
             enemySlots.RemoveAt(_index);
         }
 
-        ResetSlotIndex();
-        
+        SortSlotIndex();
+
     }
+
 
     public void SortSlotIndex()
     {
-        // 어그로 순으로 슬롯 재정렬
-        // ...
+        // 오름차순 정렬. 람다 빼는게 나을수도?
+        heroSlots.Sort((GameObject A, GameObject B) =>
+        {
+            if (A.GetComponent<BattleSlot>().GetBattleUnit().aggro <
+                B.GetComponent<BattleSlot>().GetBattleUnit().aggro)
+                return 1;
+            else if (A.GetComponent<BattleSlot>().GetBattleUnit().aggro >
+                B.GetComponent<BattleSlot>().GetBattleUnit().aggro)
+                return -1;
+            return 0;
+        });
+
+        enemySlots.Sort((GameObject A, GameObject B) =>
+        {
+            if (A.GetComponent<BattleSlot>().GetBattleUnit().aggro <
+                B.GetComponent<BattleSlot>().GetBattleUnit().aggro)
+                return 1;
+            else if (A.GetComponent<BattleSlot>().GetBattleUnit().aggro >
+                B.GetComponent<BattleSlot>().GetBattleUnit().aggro)
+                return -1;
+            return 0;
+        });
+
+        
 
         // 인덱스 다시 매기기
         ResetSlotIndex();
 
         // 바뀐 인덱스에 맞춰 재정렬 애니메이션 실행
-        // ...
+        FindObjectOfType<SlotAnimator>().ReplaceSlotsAll(3.0f);
     }
 
     public void RollEvent()
@@ -378,5 +397,10 @@ public class BattleSceneManager : MonoBehaviour
         {
             return EnemyZone;
         }
+    }
+
+    public void EscEvent()
+    {
+        SceneManager.LoadScene("Dungeon2");
     }
 }
